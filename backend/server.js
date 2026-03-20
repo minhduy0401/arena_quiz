@@ -11,12 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 const server = http.createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
-  }
-});
+const io = new Server(server, { cors: { origin: "*" } });
 
 /* =========================
    CONFIG
@@ -1184,10 +1179,9 @@ io.on("connection", socket => {
 /* =========================
    START SERVER
 ========================= */
-const PORT = process.env.PORT || 4000;
-
 sequelize.sync().then(() => {
-    server.listen(PORT, () => {
-        console.log(`🚀 Arena Quiz Server running on port ${PORT}`);
+    server.listen(4000, () => {
+        console.log("🚀 Arena Quiz Server running ");
     });
 });
+
