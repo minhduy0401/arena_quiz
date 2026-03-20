@@ -1,0 +1,130 @@
+/* Nền vũ trụ Nebula chuyển động */
+.galaxy-bg {
+  background-color: #020617;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(76, 29, 149, 0.45) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(131, 24, 67, 0.35) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.45) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(88, 28, 135, 0.25) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(124, 58, 237, 0.35) 0px, transparent 50%);
+  background-size: 200% 200%;
+  animation: nebulaAnimation 12s ease infinite;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes nebulaAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Lớp sao Parallax */
+.stars-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.stars-small {
+  width: 1px; height: 1px; background: transparent;
+  box-shadow: 444px 555px #FFF, 123px 234px #FFF, 890px 100px #FFF, 500px 300px #FFF, 1500px 400px #FFF, 200px 900px #FFF, 1200px 100px #FFF, 600px 200px #FFF, 100px 100px #FFF, 1400px 800px #FFF;
+  animation: animStar 40s linear infinite;
+}
+.stars-medium {
+  width: 2px; height: 2px; background: transparent;
+  box-shadow: 100px 200px #FFF, 400px 600px #FFF, 800px 100px #FFF, 1200px 500px #FFF, 300px 800px #FFF, 900px 700px #FFF;
+  animation: animStar 80s linear infinite;
+}
+@keyframes animStar {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-2000px); }
+}
+
+/* --- HIỆU ỨNG SAO BĂNG HẦM HỐ --- */
+.meteor-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.meteor {
+  position: absolute;
+  top: -150px;
+  width: 3px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 70%, #0ea5e9 100%);
+  opacity: 0;
+  transform: rotate(45deg);
+  /* Phát sáng Neon rực rỡ */
+  box-shadow: 0 0 25px 3px rgba(14, 165, 233, 0.8), 0 0 10px #fff;
+  animation: meteorFallHeavy 0.8s ease-in forwards;
+}
+
+@keyframes meteorFallHeavy {
+  0% { transform: translate(0, 0) rotate(45deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translate(1500px, 1500px) rotate(45deg); opacity: 0; }
+}
+
+/* Kính mờ (Glassmorphism) */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.glow-title {
+  text-shadow: 0 0 30px rgba(167, 139, 250, 0.4);
+}
+
+.animate-bounceIn { animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+@keyframes bounceIn { 0% { transform: scale(0.3); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+.animate-fadeIn { animation: fadeIn 0.5s ease-out; }
+@keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@keyframes fadeOut { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-10px); } }
+
+/* Hiệu ứng nháy đỏ cảnh báo */
+.warning-pulse {
+  animation: pulseRed 0.5s infinite alternate;
+}
+
+@keyframes pulseRed {
+  from { box-shadow: inset 0 0 20px rgba(239, 68, 68, 0); }
+  to { box-shadow: inset 0 0 40px rgba(239, 68, 68, 0.5); }
+}
+
+/* Custom Scrollbar for Leaderboard */
+.custom-scrollbar {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #facc15 rgba(255, 255, 255, 0.05);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #facc15, #f59e0b);
+  border-radius: 10px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+  min-height: 40px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #fbbf24, #f97316);
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.8);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(to bottom, #eab308, #ea580c);
+  box-shadow: 0 0 20px rgba(234, 179, 8, 1);
+}
