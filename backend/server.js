@@ -1184,8 +1184,10 @@ io.on("connection", socket => {
 /* =========================
    START SERVER
 ========================= */
+const PORT = process.env.PORT || 4000;
+
 sequelize.sync().then(() => {
-    server.listen(4000, () => {
-        console.log("🚀 Arena Quiz Server running ");
+    server.listen(PORT, () => {
+        console.log(`🚀 Arena Quiz Server running on port ${PORT}`);
     });
 });
